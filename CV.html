@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="CVgrid.css">
+    <link rel="stylesheet" href="CV.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="CVgrid.js">
+    <script src="CV.js">
 
     </script>
 </head>
@@ -27,13 +27,35 @@
             <p>
                 עבדתי בשלוש חברות, חברה א, חברה ב, חברה ג
             </p>
-
-        </div>
-        <div id="SI">
             <h2> school information</h2>
             <p>
                 סיימתי 12 שנות לימודי, עשיתי מכינה להנדסה והיום אני בשנה השלישית לתואר ניהול מערכות מידע
             </p>
+
+
+        </div>
+        <div id="SI">
+            <form action="">
+                <h1>
+                    contact us
+                </h1>
+                <label for="">
+                    Full Name:
+                </label>
+                <input type="text"> <br>
+                <label for="" class="EmailL">
+                    Email:
+                </label>
+                <input id="Email" type="email" required pattern="+.@+."> <br>
+                <label for="">
+                    your notes
+                </label><br>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+            </form>
+            <button onclick="validateINFO()">
+                next
+            </button>
+            
 
         </div>
         <div id="PicD">
