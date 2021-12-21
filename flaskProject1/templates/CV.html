@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}CV{% endblock%}
+
+{% block BODY %}
+<body onload="Name()">
+        <button id="Button" onclick="Name">Click here</button><br><br>
+    <div id="container">
+        <div id="header">
+            <h1> my CV</h1>
+        </div>
+        <div id="PI">
+            <h2> personal information</h2>
+            <p>
+                my name is shahar amir <br>
+                age 26
+            </p>
+        </div>
+        <div id="WE">
+            <h2> work experience</h2>
+            <p>
+                עבדתי בשלוש חברות, חברה א, חברה ב, חברה ג
+            </p>
+            <h2> school information</h2>
+            <p>
+                סיימתי 12 שנות לימודי, עשיתי מכינה להנדסה והיום אני בשנה השלישית לתואר ניהול מערכות מידע
+            </p>
+
+
+        </div>
+        <div id="SI">
+            <form action="">
+                <h1>
+                    contact us
+                </h1>
+                <label for="">
+                    Full Name:
+                </label>
+                <input type="text"> <br>
+                <label for="" class="EmailL">
+                    Email:
+                </label>
+                <input id="Email" type="email" required pattern="+.@+."> <br>
+                <label for="">
+                    your notes
+                </label><br>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+            </form>
+            <button onclick="validateINFO()">
+                next
+            </button>
+
+        </div>
+        <div id="PicD">
+            <img src="milan.jpg" alt="" id="pic">
+        </div>
+    </div>
+
+</body>
+{% endblock %}

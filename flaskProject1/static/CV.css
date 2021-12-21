@@ -1,0 +1,53 @@
+#container {
+    background-color: blueviolet;
+    display: grid;
+    grid-template-areas: 'header header header' 'right main left' 'footer footer footer';
+
+}
+
+#header{
+    background-color: cornsilk;
+    text-align-last: center;
+    grid-area: header;
+}
+
+#PI{
+    grid-area: right;
+}
+
+#SI{
+    grid-area: left;
+}
+
+#WE{
+    grid-area: main;
+}
+@media screen and (max-width: 992px) {
+    body {
+      background-color: blue;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    body {
+      background-color: plum;
+    }
+  }
+
+
+@keyframes blink {
+  
+  from {background-color: chartreuse;}
+  to{background-color: green;}
+
+}
+
+#PicD {
+  grid-area: footer;
+  background-color: chartreuse;
+  text-align-last: center;
+  animation-name: blink;
+  animation-duration: 2s;
+  animation-iteration-count: 4;
+
+}

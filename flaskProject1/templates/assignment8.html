@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+{% block title %} Assignment 8 {% endblock %}
+
+{% block BODY %}
+    {{ super() }}
+    <h1>About Me...</h1>
+      <h3>name: {{ my_profile.name | default('unknown', true) }} {{ my_profile.second  }}</h3>
+    <h3> university: {{ university | default('unspecified', true)}}</h3>
+   <h3> movies: </h3>
+    <ul>
+        {% for movie in fav_movies %}
+            <li>{{ movie }}</li>
+        {%  endfor%}
+    </ul>
+    <h1> </h1>
+<h3>hobbies</h3>
+    <ul>
+        {% for hobby in hobbies %}
+            <li>{{ hobby }}</li>
+        {%  endfor%}
+    </ul>
+
+    {% if my_profile %}
+        <h3> <a href="cv">go to my CV </a></h3>
+    {% else %}
+        <h3> Please, log in to the website</h3>
+    {% endif %}
+
+{% endblock %}
