@@ -7,6 +7,14 @@
 <body>
   <header>
         <a href="/assignment8" > Assignment 8 </a>
+
+        <a href="/assignment9" > Assignment 9 </a>
+        {% if session.username %}
+            <h1> Log In, {{ session.username }} !</h1>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <p> </p>
+        {% endif %}
     </header>
 </body>
 </html>

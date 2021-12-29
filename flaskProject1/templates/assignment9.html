@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %} Assignment 9 {% endblock %}
+
+    {% block BODY %}
+    {{ super() }}
+    <h1> Assignment 9 </h1>
+
+    <h2> Search form</h2>
+    <form action="/assignment9" method="GET">
+        User Name: <input name="fullname" type="text">
+        <input type="submit" value="search">
+    </form>
+
+    {% if fullname %}
+        {% for user in users %}
+            {% if user[fullname] == fullname %}
+                <h4> full name: {{ user['fullname'] }} </h4>
+                <h4> User Email: {{ user['email'] }} </h4>
+                <h4> User Age: {{ user['age'] }} </h4>
+            {% endif %}
+        {% endfor%}
+    {% else %}
+        {% for user in users %}
+              <li>{{ user['fullname'] }}</li>
+        {% endfor %}
+    {% endif %}
+
+
+    {% if session.username %}
+        <h4> Hello {{ session.username }} Welcome Back :)</h4>
+            <input name="logOutButton"  type="submit" value="log out">
+{#        </form>#}
+        {% else %}
+
+          {% if userName  %}
+        <h4> hello, {{ username }}</h4>
+    {%  else%}
+    Please enter your and password
+
+        <h2> Registration form</h2>
+
+             <form action= "/assignment9"  method="POST">
+              Username: <input name="userName" type="text"><br>
+              Password: <input name="password" type="password"><br>
+              <input type=submit name="btn" value="log in">
+         </form>
+    {% endif %}
+
+  {% if username %}
+    <br>
+    <form action="/assignment9" method="Post">
+        <input type="submit" name="btn" value="log out"   >
+    </form>
+        <br>
+    {% endif %}
+
+{% endblock %}
