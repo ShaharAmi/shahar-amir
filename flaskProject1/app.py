@@ -1,6 +1,17 @@
 from flask import Flask, redirect, url_for, render_template, request, session
+from interact_with_DB import interact_db
 
 app = Flask(__name__)
+app.secret_key = '123456789'
+
+from pages.assignment10.assignment10 import assignment10
+app.register_blueprint(assignment10)
+
+from pages.users.users import users
+app.register_blueprint(users)
+
+# from pages.assignment10.assignment10 import assignment10
+# app.register_blueprint(assignment10)
 
 @app.route('/')
 def hello_world():  # put application's code here
@@ -45,26 +56,27 @@ def assignment9():
         {'fullname': 'Ziv Amir', 'email': 'ziv@gmail.com', 'age': '57'},
         {'fullname': 'Yahel Amir', 'email': 'yahel@gmail.com', 'age': '16'}
     ]
+    # else
     fullName = ''
     if request.method == 'GET':
-        if 'fullName' in request.args:
-            fullname = request.args['fullName']
-            email = request.args['email']
-            age = request.args['age']
-            return render_template('assignment9.html',request_method=request.method, fullname=fullname, email=email, age=age, users=users)
-        return render_template('assignment9.html')
+            if 'fullName' in request.args:
+                fullname = request.args['fullName']
+                email = request.args['email']
+                age = request.args['age']
+                return render_template('assignment9.html',request_method=request.method, fullname=fullname, email=email, age=age, users=users)
+            return render_template('assignment9.html')
 
     if request.form == 'POST':
-        if request.form["btn"]: "log out"
-        session['Logged_in'] = False
-        session['username'] = ''
-        username = ''
-        # else
-        username = request.form['username']
-        password = request.form['password']
-        session['Logged_in'] = True
-        session['username'] = username
-    return render_template('assignment9.html', username=username, fullName=fullName, users=users )
+            if request.form["btn"]: "log out"
+            session['Logged_in'] = False
+            session['username'] = ''
+            username = ''
+            # else
+            username = request.form['username']
+            password = request.form['password']
+            session['Logged_in'] = True
+            session['username'] = username
+            return render_template('assignment9.html', username=username)
 
 @app.route('/log_out')
 def log_out():
