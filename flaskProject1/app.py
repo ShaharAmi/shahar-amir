@@ -4,18 +4,18 @@ from interact_with_DB import interact_db
 app = Flask(__name__)
 app.secret_key = '123456789'
 
-from pages.assignment10.assignment10 import assignment10
-app.register_blueprint(assignment10)
-
-from pages.users.users import users
-app.register_blueprint(users)
-
 # from pages.assignment10.assignment10 import assignment10
 # app.register_blueprint(assignment10)
 
+# from pages.users.users import users
+# app.register_blueprint(users)
+
+from pages.assignment10.assignment10 import assignment10
+app.register_blueprint(assignment10)
+
 @app.route('/')
 def hello_world():  # put application's code here
-    return 'Hello World!'
+    return render_template('base.html')
 
 @app.route("/redirect")
 def index():

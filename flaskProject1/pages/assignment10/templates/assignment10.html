@@ -1,9 +1,8 @@
-{% extends "base.html" %}
 {% block title %}
-    Users
+    Assignment10
 {% endblock %}
 {% block tohen %}
-   <h1>Users Page</h1>
+    <h1>Users Page</h1>
     <h2>Creat New User </h2>
     <form action="/creat_new_user" method="post">
         <input type="text" name="name" placeholder="name">
@@ -35,7 +34,7 @@
         <ul>
             {% for user in user_list %}
                 <li>
-                    Name: {{ user.name }}, Email: {{user.email}}
+                    Name: {{ user.name }}, Email: {{ user.email }}
                 </li>
             {% endfor %}
         </ul>

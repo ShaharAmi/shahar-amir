@@ -14,7 +14,7 @@ def creat_new_user_func():
     name = request.form['name']
     email = request.form['email']
     password = request.form['password']
-    query = "INSERT INTO users (name, email, password) VALUES ('%s', '%s', '%s')" % (name, email, password)
+    query = "INSERT INTO users(name, email, password) VALUES ('%s', '%s', '%s')" % (name, email, password)
     interact_db(query=query, query_type='commit')
     return redirect('/user_list')
 
@@ -40,6 +40,6 @@ def delete_user_func():
 
 @assignment10.route('/user_list')
 def print_users_func():  # put application's code here
-    query = 'select * from users'
+    query = "select * from users"
     query_result = interact_db(query=query, query_type='fetch')
     return render_template('assignment10.html', user_list=query_result)
