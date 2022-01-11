@@ -1,21 +1,21 @@
 from flask import Flask, redirect, url_for, render_template, request, session
-from interact_with_DB import interact_db
+from interact_with_DB import interact_db, query_to_json
+import json
+import requests
+
 
 app = Flask(__name__)
 app.secret_key = '123456789'
 
-# from pages.assignment10.assignment10 import assignment10
-# app.register_blueprint(assignment10)
-
-# from pages.users.users import users
-# app.register_blueprint(users)
+from pages.users.users import users
+app.register_blueprint(users)
 
 from pages.assignment10.assignment10 import assignment10
 app.register_blueprint(assignment10)
 
 @app.route('/')
 def hello_world():  # put application's code here
-    return render_template('base.html')
+    return render_template('homepage.html')
 
 @app.route("/redirect")
 def index():
@@ -49,7 +49,7 @@ def assignment9():
     if session['Logged_in']:
         username = session['username']
 
-    users = [
+    my_users = [
         {'fullname': 'Shahar Amir', 'email': 'shahar@gmail.com', 'age': '27'},
         {'fullname': 'Sigal Amir', 'email': 'sigal@gmail.com', 'age': '52'},
         {'fullname': 'Din Amir', 'email': 'din@gmail.com', 'age': '27'},
@@ -83,6 +83,32 @@ def log_out():
     session.pop('username')
     session['logged_in'] = False
     return redirect()
+
+
+@app.route("/assignment11/users")
+def assignment11():
+    query = "select * from users"
+    query_result = query_to_json(query=query)
+    return json.dumps(query_result)
+
+
+@app.route("/assignment11/outer_source", methods=['GET'])
+def assignment11_func():
+    if 'number' in request.args:
+        number = request.args['number']
+        req = requests.get(url=f"https://reqres.in/api/users/{number}")
+        req = req.json()
+        return render_template('assignment11_outer_source.html', user=req['data'])
+    return render_template('assignment11_outer_source.html')
+
+
+# @app.route('/req_frontend')
+# def req_frontend_func():
+#     return render_template('req_frontend.html')
+#
+# @app.route('/req_backend')
+# def req_backend_func():
+#     return render_template('req_backend.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
